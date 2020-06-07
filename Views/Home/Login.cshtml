@@ -1,0 +1,35 @@
+﻿@model RoomReservation.Models.User
+@{
+    ViewBag.Title = "Wprowadź dane";
+}
+    <link href="~/Content/styleFront.css" rel="stylesheet" type="text/css" />
+<h3>@ViewBag.Title</h3>
+@using (Html.BeginForm("LogIn2", "Home", FormMethod.Post))
+{
+<div class="registerArea">
+    <div class="label2">
+        <label for="nick">Podaj nick</label>
+    </div>
+    <div class="textfield">
+        <input type="text" name="nick" />
+    </div>
+</div> 
+
+<div class="registerArea">
+    <div class="label2">
+        <label for="password">Podaj hasło</label>
+    </div>
+    <div class="textfield">
+        <input type="password" name="password" />
+    </div>
+</div>   
+    <div class="area1">
+        <input type="submit" class="button1" value="Zaloguj się" />
+    </div>
+    <div class="invalid">
+        @TempData["Alert"]
+    </div>
+    
+
+}
+

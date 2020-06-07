@@ -1,0 +1,62 @@
+﻿@model RoomReservation.Models.Reservation
+@{
+    ViewBag.Title = "CreateReservation";
+}
+    <link href="~/Content/styleFront.css" rel="stylesheet" type="text/css" />
+@{
+    // var rooms = Model.GetRoomsNumbers();
+}
+
+<form action="AddReservation" method="post">
+
+    <div class="registerArea">
+        <div class="label3">
+            <label for="rooms"> Wybierz pokój: </label>
+        </div>
+        <div class="textfield">
+            <select id="rooms" name="rooms">
+                @foreach (var item in Model.Nums)
+                {
+                    <option value="@item">@item</option>
+                }
+
+            </select>
+        </div>
+    </div>
+   
+    <div class="registerArea">
+        <div class="label3">
+            <label for="startDay">Wybierz dzien poczatkowy:</label>
+        </div>
+        <div class="textfield">
+            <input id="startDay" name="startDay" type="date" value="2020-01-01" />
+        </div>
+    </div>
+    
+    <div class="registerArea">
+        <div class="label3">
+            <label for="endDay">Wybierz dzien koncowy:</label>
+        </div>
+        <div class="textfield">
+            <input id="endDay" name="endDay" type="date" value="2020-01-01" />
+        </div>
+    </div>
+  
+    
+   
+    <input type="hidden" name="hiddenUserId" value="@Model.UserId" />
+    <div class="area1">
+        <input type="submit" class="button2" value="Dodaj rezerwacje" />
+    </div>
+    
+</form>
+<div class="invalid">
+    @TempData["BadDates"]
+</div>
+<div class="area1">
+    <input type="button" name="back" class="button3" value="Wróć do profilu" onclick="location.href='@Url.Action("Login3", "Home")'" />
+</div>
+
+@*@Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer })*@
+
+

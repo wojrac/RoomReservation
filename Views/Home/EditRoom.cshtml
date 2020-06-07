@@ -1,0 +1,28 @@
+﻿@model RoomReservation.Models.Room
+@{
+    ViewBag.Title = "EditRoom";
+}
+    <link href="~/Content/styleFront.css" rel="stylesheet" type="text/css" />
+
+
+<form action="EditRoom" method="post">
+
+    <div class="registerArea">
+        <div class="label3">
+            <label for="prizePerDay">Podaj cene za dobe</label>
+        </div>
+        <div class="textfield">
+            <input id="prizePerDay" name="prizePerDay" type="number" value="200" />
+        </div>
+    </div>
+  
+    b
+    
+    <input type="hidden" name="roomId" value=@Model.RoomId />
+    <div class="area1">
+        <input type="submit" class="button2" value="Edytuj pokój" />
+    </div>
+    
+</form>
+
+

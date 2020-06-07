@@ -1,0 +1,58 @@
+﻿@model RoomReservation.Models.User
+@{
+    ViewBag.Title = "Logged";
+}
+    <link href="~/Content/styleFront.css" rel="stylesheet" type="text/css" />
+<h2>Witaj @Model.NickName</h2>
+
+
+<!--<form action="CreateReservation" method="post">
+    <input type="hidden" id="userId" name="userId" value="">
+</form>-->
+@* @using (Html.BeginForm("CreateReservation", "Home", FormMethod.Post))
+    {
+        @Html.HiddenFor(model => model.UserId)
+    <input type="hidden" id="UserId" name="UserId" value="@Model.UserId" />
+    }
+
+    <input type="button" name="createReservation" value="Dodaj Rezerwację" onclick="location.href='@Url.Action("CreateReservation", "Home")'" />
+*@
+@if (Model.UserRole == 0)
+{
+    <div class="area1">
+        @using (Html.BeginForm("CreateReservation", "Home", FormMethod.Post))
+        {
+            <input type="submit" class="button2" name="createReservation" , value="Dodaj Rezerwację" />
+            <input type="hidden" name="userNick" value="@Model.NickName" />
+        }
+    </div>
+    <div class="area1">
+        @using (Html.BeginForm("ShowReservations", "Home", FormMethod.Get))
+        {
+            <input type="submit" class="button2" name="showReservations" , value="Pokaż Rezerwacje" />
+            <input type="hidden" name="userNick" value="@Model.NickName" />
+        }
+    </div>
+}
+else
+{
+    <div class="area1">
+        @using (Html.BeginForm("CreateRoom", "Home", FormMethod.Post))
+        {
+            <input type="submit" class="button2" name="createRoom" , value="Dodaj Pokój" />
+            <input type="hidden" name="userNick" value="@Model.NickName" />
+            <input type="hidden" name="role" value="@Model.UserRole" />
+
+        }
+    </div>
+    <div class="area1">
+        @using (Html.BeginForm("ShowRooms", "Home", FormMethod.Get))
+        {
+            <input type="submit" class="button2" name="showRooms" , value="Pokaż Pokoje" />
+            <input type="hidden" name="userNick" value="@Model.NickName" />
+            <input type="hidden" name="role" value="@Model.UserRole" />
+        }
+    </div>
+}
+
+

@@ -1,0 +1,39 @@
+﻿@model RoomReservation.Models.Room
+    @{
+        ViewBag.Title = "CreateRoom";
+    }
+    <link href="~/Content/styleFront.css" rel="stylesheet" type="text/css" />
+
+    <form action="AddRoom" method="post">
+
+        <div class="registerArea">
+            <div class="label3">
+                <label for="numberRoom">Wpisz numer</label>
+            </div>
+            <div class="textfield">
+                <input id="numberRoom" name="numberRoom" type="number" value="101" />
+            </div>
+        </div>
+       
+        <div class="registerArea">
+            <div class="label3">
+                <label for="prizePerDay">Podaj cene za dobe</label>
+            </div>
+            <div class="textfield">
+                <input id="prizePerDay" name="prizePerDay" type="number" value="150" />
+            </div>
+        </div>
+       
+        
+        
+        <div class="area1">
+            <input type="submit" class="button2" value="Dodaj pokój" />
+        </div>
+        
+    </form>
+    <div class="invalid">
+        @TempData["BadNumber"]
+    </div>
+    <div class="area1">
+        <input type="button" class="button3" name="back" value="Wróć do profilu" onclick="location.href='@Url.Action("Login3", "Home")'" />
+    </div>

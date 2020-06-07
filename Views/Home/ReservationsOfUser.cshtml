@@ -1,0 +1,51 @@
+﻿@model RoomReservation.Models.Reservation
+@{
+    ViewBag.Title = "ReservationsOfUser";
+}
+    <link href="~/Content/styleFront.css" rel="stylesheet" type="text/css" />
+<h2>Twoje Rezerwacje</h2>
+
+<div>
+
+    @foreach(var res in Model.Reservations)
+    {
+    <div class="area2">
+        <div class="info1">
+            Numer Pokoju: @res.Room.Number
+        </div>
+        <div class="info1">
+            OD: @res.StartDate.Date
+        </div>
+        <div class="info1">
+            DO: @res.EndDate.Date
+        </div>
+        
+        
+        
+        <div>
+            @using (Html.BeginForm("DeleteReservation", "Home", FormMethod.Post))
+            {
+            <div >
+                <input type="submit" class="button4" name="deleteReservation" , value="Usuń Rezerwację" />
+            </div>
+                
+                <input type="hidden" name="resId" value="@res.ReservationId" />
+                <input type="hidden" name="userNick" value="@res.User.NickName" />
+            }
+        </div>
+        <div>
+            @using (Html.BeginForm("GoToEdit", "Home", FormMethod.Post))
+            {
+            <div > 
+                <input type="submit" class="button2" name="editReservation" , value="Edytuj Rezerwację" />
+            </div>
+              
+                <input type="hidden" name="resId" value="@res.ReservationId" />
+            }
+        </div>
+
+    </div>
+    }
+</div>
+<input type="button" name="back" class="button3" value="Wróć do profilu" onclick="location.href='@Url.Action("Login3", "Home")'" />
+

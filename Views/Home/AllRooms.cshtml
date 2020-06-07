@@ -1,0 +1,42 @@
+﻿@model RoomReservation.Models.Room
+@{
+    ViewBag.Title = "AllRooms";
+}
+    <link href="~/Content/styleFront.css" rel="stylesheet" type="text/css" />
+<h2>Spis Pokoi</h2>
+<div>
+
+    @foreach (var r in Model.AllRooms)
+    {
+    <div class="area2">
+        <div class="info1">
+            Numer:   @r.Number
+        </div>
+        <div class="info1">
+            Cena za dobe: @r.PrizePerDay
+        </div>
+        
+        
+        <div>
+            @using (Html.BeginForm("DeleteRoom", "Home", FormMethod.Post))
+            {
+                <input type="submit" class="button4" name="deleteRoom" , value="Usuń Pokój" />
+                <input type="hidden" name="roomId" value="@r.RoomId" />
+            }
+        </div>
+        <div>
+            @using (Html.BeginForm("GoToEditRoom", "Home", FormMethod.Post))
+            {
+                <input type="submit" class="button2" name="editRoom" , value="Edytuj Pokój" />
+                <input type="hidden" name="roomId" value="@r.RoomId" />
+            }
+        </div>
+
+    </div>
+    }
+</div>
+<div class="invalid">
+    @TempData["BadDelete"]
+</div>
+
+<input type="button" name="back" class="button3" value="Wróć do profilu" onclick="location.href='@Url.Action("Login3", "Home")'" />

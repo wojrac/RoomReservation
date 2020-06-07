@@ -1,0 +1,45 @@
+﻿@model RoomReservation.Models.Reservation
+@{
+    ViewBag.Title = "EditReservation";
+}
+    <link href="~/Content/styleFront.css" rel="stylesheet" type="text/css" />
+
+<form action="Edit" method="post">
+
+    @* <label for="rooms"> Wybierz pokój </label>
+        <select id="rooms" name="rooms" >
+            @foreach (var item in Model.Nums)
+            {
+                <option value="@item">@item</option>
+            }
+
+        </select>
+        <br />*@
+    <div class="registerArea">
+        <div class="label3">
+            <label for="startDay">Wybierz dzien poczatkowy</label>
+        </div>
+        <div class="textfield">
+            <input id="startDay" name="startDay" type="date" value="2020-01-01" />
+        </div>
+    </div>
+   
+    <div class="registerArea">
+        <div class="label3">
+            <label for="endDay">Wybierz dzien koncowy</label>
+        </div>
+        <div class="textfield">
+            <input id="endDay" name="endDay" type="date" value="2020-01-01" />
+        </div>
+    </div> 
+  
+    
+    <input type="hidden" name="resId" value=@Model.ReservationId />
+    <input type="submit" class="button2" value="Edytuj" />
+</form>
+<div class="invalid">
+    @TempData["BadDates"]
+</div>
+
+
+

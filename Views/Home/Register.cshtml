@@ -1,0 +1,85 @@
+﻿@model RoomReservation.Models.User
+@{
+    ViewBag.Title = "Podaj Swoje Dane";
+}
+    <link href="~/Content/styleFront.css" rel="stylesheet" type="text/css" />
+<h3>@ViewBag.Title</h3>
+
+<div>
+
+    @using (Html.BeginForm("AddUser", "Home"))
+    {
+    <div class="registerArea">
+        <div class="label1">
+            @Html.Label("Podaj imie: ")
+        </div>
+        <div class="textfield">
+            @Html.EditorFor(m => m.Name)
+        </div>
+    </div>
+        <div class="invalid">
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+    
+
+    <div class="registerArea">
+        <div class="label1">
+            @Html.Label("Podaj nazwisko: ")
+        </div>
+        <div class="textfield">
+            @Html.EditorFor(m => m.Surname)
+        </div>
+    </div>
+        <div class="invalid">
+            @Html.ValidationMessageFor(model => model.Surname)
+        </div>
+    
+
+        <div class="registerArea">
+            <div class="label1">
+                @Html.Label("Podaj nick: ")
+            </div>
+            <div class="textfield">
+                @Html.EditorFor(m => m.NickName)
+            </div>
+        </div>
+        <div class="invalid">
+            @Html.ValidationMessageFor(model => model.NickName)
+        </div>
+
+        <div class="registerArea">
+            <div class="label1">
+                @Html.Label("Podaj hasło: ")
+            </div>
+            <div class="textfield">
+                @Html.EditorFor(m => m.Password)
+            </div>
+        </div>
+        <div class="invalid">
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <div class="registerArea">
+            <div class="label1">
+                @Html.Label("Potwierdź hasło: ")
+            </div>
+            <div class="textfield">
+                @Html.EditorFor(m => m.RepeatedPasswd)
+            </div>
+        </div>
+        <div class="invalid">
+            @Html.ValidationMessageFor(model => model.RepeatedPasswd)
+        </div>
+
+        <div class="area1">
+            <input type="submit" class="button1" value="Zarejestruj" />
+        </div>
+
+
+    }
+    @TempData["Message"]
+
+</div>
+
+
+
